@@ -2,8 +2,16 @@
   width: 100vw;
   height:100vh;
 }
+
+.container{
+  position: relative;
+}
+
 .editor-container{
-    padding: 6%;
+  padding-left: 256px;
+  padding-right: 256px;
+  padding-top: 95px;
+  padding-bottom: 128px;
 }
 
 #editor{
@@ -13,4 +21,8 @@
   letter-spacing: -.004em;
   color: rgba(0,0,0,.84);
   word-break: break-word;
+}
+
+.draft-editor-container{
+  position: relative;
 }

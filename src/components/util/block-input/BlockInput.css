@@ -12,6 +12,10 @@ textarea:-ms-input-placeholder {
   text-align: center !important; 
 }
 
+textarea{
+  text-align: center !important;
+}
+
 .block-input-field > div::before{
   border:none !important;
 }

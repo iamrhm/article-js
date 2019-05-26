@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import BlockInput from "../../../components/util/block-input-component/BlockInput";
+import BlockInput from "../../../components/util/block-input/BlockInput";
 
 import "./ImageBlockStyle.css";
 

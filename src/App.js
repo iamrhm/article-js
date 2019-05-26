@@ -4,18 +4,24 @@ import {
   EditorState,
   CompositeDecorator,
   RichUtils,
+  genKey,
   Modifier,
+  ContentBlock,
+  SelectionState,
 } from 'draft-js';
 
+import Immutable from "immutable";
+
 import decoratorArray from './decorators'
-import insertDataBlock from './util/insertCustomeBlock'
-import addLink from "./util/addLink"
-import CustomeComponentBlock from './components/custome-component-block'
+import insertDataBlock from './entities/insertCustomeBlock'
+import addLink from "./entities/addLink"
+import CustomeComponentBlock from './components/custome-block'
 import { cunstomButtonMap, customStyleMap, customEntityMap } from './config/buttonInputList';
 import DEFAULT_PLUGINS from './plugin'
 
 import InputButtonList from './components/input-button-list';
 import InputModal from './components/input-modal';
+import Sidebar from './components/sidebar/Sidebar'
 
 import './App.css';
 
@@ -80,7 +86,6 @@ class App extends Component {
           break;
         case 'image':
           {
-            debugger
             const img = e.target.files[0]
             if(!img)
               break;
@@ -191,7 +196,6 @@ class App extends Component {
   handleKeyCommand = (command) => {
     const { editorState } = this.state;
     const newEditorState = RichUtils.handleKeyCommand(editorState, command);
-    this.logState(newEditorState)
     if (newEditorState) {
       this.updateEditor(newEditorState)
       return true;
@@ -223,8 +227,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className='editor-container'>
-        <InputButtonList
+      <div className='container'>
+        {/* <InputButtonList
           editorState={this.state.editorState}
           buttonValues={cunstomButtonMap}
           userEventListner={this.userEventListner}
@@ -236,8 +240,11 @@ class App extends Component {
           saveInput={this.addNewEntity}
           onClose={this.closeDialougeBox}
           userInputLink={this.state.userInputLink}
-        />
+        /> */}
+      <div className='editor-container'>
         <div id='editor'>
+         <div className='draft-editor-container'>
+         <Sidebar/>
           <Editor
             readOnly={this.state.readOnly}
             customStyleMap={customStyleMap}
@@ -248,7 +255,9 @@ class App extends Component {
             handleKeyCommand={this.handleKeyCommand}
             ref="editorRef"
           />
+          </div>
         </div>
+      </div>
       </div>
     );
   }

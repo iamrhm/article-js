@@ -1,0 +1,9 @@
+.sidebar-wrapper{
+  position: relative;
+}
+
+.menue-wrapper{
+  float: left;
+  left: -70px;
+  position: absolute;
+}
